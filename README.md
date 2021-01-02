@@ -2,7 +2,7 @@
 
 Set environment name based on Git branch.
 
-Returns `prod` if branch is `refs/heads/master` else `test`.
+Returns `prod` if branch is `refs/heads/master`, otherwise a generated name based on the branch name.
 
 ## Inputs
 
@@ -12,7 +12,13 @@ N/A
 
 ### `env`
 
-The computed environment name
+The environment name, which is a sanitized version of the current branch name.
+
+The following operations are applied to branch names to get the environment name:
+
+1. Make all characters lower case
+1. Replace slashes (`/`) with dashes (`-`)
+1. Replace underscores (`_`) with dashes (`-`)
 
 ## Example usage
 
@@ -20,7 +26,7 @@ The computed environment name
 ```
 - name: Set environment
   id: set_env
-  uses: mechtron/github-actions-set-env@1.0.0
+  uses: mechtron/github-actions-set-env@2.0.0
 ```
 
 ### Get
