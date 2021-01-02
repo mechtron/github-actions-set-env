@@ -2,7 +2,7 @@
 
 Set environment name based on Git branch.
 
-Returns `prod` if branch is `refs/heads/master`, otherwise a generated name based on the branch name.
+Returns: `prod` if branch is `refs/heads/master`, the tag name if current commit was tagged, else a generated name based on the branch name.
 
 ## Inputs
 
@@ -26,7 +26,7 @@ The following operations are applied to branch names to get the environment name
 ```
 - name: Set environment
   id: set_env
-  uses: mechtron/github-actions-set-env@2.0.0
+  uses: mechtron/github-actions-set-env@3.0.0
 ```
 
 ### Get

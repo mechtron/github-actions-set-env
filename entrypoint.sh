@@ -6,6 +6,9 @@ set -e
 if [[ $GITHUB_REF = "refs/heads/master" ]]
 then
     export ENV="prod"
+elif [[ $GITHUB_EVENT_NAME = "release" ]]
+then
+    export ENV=`echo ${GITHUB_REF#refs/tags/}`
 else
     export ENV=`echo ${GITHUB_REF#refs/heads/} | tr '[:upper:]' '[:lower:]' | tr / - | tr _ -`
 fi
